@@ -1,1 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prajwal A Narappanavar | ECE Scholar & VLSI Enthusiast</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfeff',
+              100: '#cffafe',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+              glow: '#00f2fe'
+            },
+            accent: {
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom glow effects and scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b0f19;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0891b2;
+    }
+
+    .neon-border {
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+    }
+    .neon-border-hover:hover {
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.45);
+    }
+    .neon-text-glow {
+      text-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
+    }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .light .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .circuit-bg {
+      background-image: radial-gradient(rgba(34, 211, 238, 0.1) 1px, transparent 1px),
+                        radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans selection:bg-brand-500 selection:text-slate-900 transition-colors duration-300 min-h-screen relative overflow-x-hidden">
+
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-500/15 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute top-1/3 -right-40 w-96 h-96 bg-accent-500/15 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-10 left-1/4 w-80 h-80 bg-brand-600/10 rounded-full blur-3xl"></div>
+    <div class="absolute inset-0 circuit-bg opacity-70"></div>
+  </div>
+
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-400 to-accent-600 flex items-center justify-center font-mono font-bold text-slate-950 shadow-md transition-transform transform group-hover:scale-105 group-hover:rotate-3">
+            PAN
+          </div>
+          <div>
+            <span class="text-base sm:text-lg font-bold tracking-tight text-white group-hover:text-brand-400 transition-colors">
+              Prajwal A Narappanavar
+            </span>
+            <span class="block text-xs text-brand-400 font-mono tracking-wider font-semibold">ECE & VLSI Scholar</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-slate-300">
+          <a href="#about" class="hover:text-brand-400 transition-colors">About</a>
+          <a href="#skills" class="hover:text-brand-400 transition-colors">Skills</a>
+          <a href="#projects" class="hover:text-brand-400 transition-colors">Projects</a>
+          <a href="#playground" class="hover:text-brand-400 transition-colors flex items-center gap-1.5 text-brand-300">
+            <i data-lucide="terminal" class="w-4 h-4"></i> Python Sim
+          </a>
+          <a href="#passions" class="hover:text-brand-400 transition-colors">Beyond ECE</a>
+          <a href="#contact" class="hover:text-brand-400 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Side CTA & Theme -->
+        <div class="flex items-center space-x-3">
+          <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2 rounded-xl text-slate-300 hover:text-brand-400 hover:bg-slate-800/60 transition-all">
+            <i id="themeIcon" data-lucide="sun" class="w-5 h-5"></i>
+          </button>
+          <a href="#contact" class="hidden sm:inline-flex items-center px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-brand-500 to-accent-500 text-slate-950 hover:opacity-90 transition-all shadow-md">
+            Hire / Connect
+          </a>
+          <!-- Mobile Menu Trigger -->
+          <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="md:hidden p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800">
+            <i id="menuIcon" data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pt-2 pb-6 space-y-2 bg-slate-900/95 border-b border-slate-800 backdrop-blur-xl">
+      <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-400">About</a>
+      <a href="#skills" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-400">Skills</a>
+      <a href="#projects" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-400">Projects</a>
+      <a href="#playground" class="block px-3 py-2 rounded-lg text-base font-medium text-brand-300 hover:bg-slate-800">Python Simulator</a>
+      <a href="#passions" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-400">Beyond ECE</a>
+      <a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-400">Contact</a>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-28 sm:pt-36">
+    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full text-xs font-mono font-medium bg-brand-500/10 text-brand-400 border border-brand-500/30">
+            <span class="w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
+            <span>ECE Undergrad @ KLEIT, Hubballi</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+            Hi, I'm <span class="bg-gradient-to-r from-brand-400 via-cyan-200 to-accent-400 bg-clip-text text-transparent neon-text-glow">Prajwal</span>
+            <br>
+            <span class="text-2xl sm:text-4xl text-slate-300 font-bold block mt-2">
+              Shaping Silicon & Building Intelligent Systems.
+            </span>
+          </h1>
+
+          <!-- Dynamic Sub-tag typing effect -->
+          <div class="text-lg sm:text-xl text-slate-400 font-mono flex items-center gap-2">
+            <span>Specializing in:</span>
+            <span id="dynamicRoles" class="text-brand-400 font-semibold border-r-2 border-brand-400 pr-1 animate-pulse">VLSI Design</span>
+          </div>
+
+          <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+            Electronics & Communication Engineering scholar at <strong class="text-white">KLE Institute of Technology</strong> with a strong foundation in digital circuit design, CMOS fundamentals, embedded systems, microcontrollers (8051/Arduino), and Python-driven simulations.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#projects" class="px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-semibold text-sm transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brand-500/25 flex items-center gap-2">
+              <i data-lucide="cpu" class="w-4 h-4"></i> View Featured Projects
+            </a>
+            <button onclick="downloadResumePlaceholder()" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold text-sm transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4"></i> Resume / Bio Sheet
+            </button>
+            <a href="#contact" class="px-5 py-3 rounded-xl border border-brand-500/30 text-brand-300 hover:bg-brand-500/10 text-sm font-semibold transition-all">
+              Get in Touch &rarr;
+            </a>
+          </div>
+
+          <!-- Social Quick Links -->
+          <div class="flex items-center gap-4 pt-4 text-slate-400">
+            <span class="text-xs uppercase tracking-wider font-mono text-slate-400 font-medium">Connect:</span>
+            <a href="https://github.com" target="_blank" rel="noreferrer" class="p-2 rounded-lg hover:text-brand-400 hover:bg-slate-800/80 transition-colors" title="GitHub">
+              <i data-lucide="github" class="w-5 h-5"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" class="p-2 rounded-lg hover:text-brand-400 hover:bg-slate-800/80 transition-colors" title="LinkedIn">
+              <i data-lucide="linkedin" class="w-5 h-5"></i>
+            </a>
+            <a href="mailto:prajwal.narappanavar@example.com" class="p-2 rounded-lg hover:text-brand-400 hover:bg-slate-800/80 transition-colors" title="Email">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Interactive Chip Graphic / Stats Card -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative glass-card rounded-2xl p-6 sm:p-8 neon-border border-cyan-500/30 overflow-hidden group">
+            <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-brand-500/10 rounded-full blur-2xl group-hover:bg-brand-500/20 transition-all"></div>
+            
+            <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-xl bg-slate-800/90 border border-slate-700 flex items-center justify-center text-brand-400">
+                  <i data-lucide="microchip" class="w-7 h-7"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-white text-base">Silicon Architecture</h3>
+                  <p class="text-xs text-brand-400 font-mono">IC & Embedded Systems</p>
+                </div>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono">
+                Active Lab
+              </span>
+            </div>
+
+            <!-- Stats & Quick Facts -->
+            <div class="grid grid-cols-2 gap-4 my-6 font-mono">
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-xs text-slate-400">Institution</div>
+                <div class="text-base font-bold text-white mt-1">KLEIT</div>
+                <div class="text-[11px] text-brand-400">Hubballi, KA</div>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-xs text-slate-400">Discipline</div>
+                <div class="text-base font-bold text-white mt-1">ECE</div>
+                <div class="text-[11px] text-brand-400">Semiconductors</div>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-xs text-slate-400">Core Focus</div>
+                <div class="text-base font-bold text-white mt-1">VLSI / CMOS</div>
+                <div class="text-[11px] text-brand-400">Transistor logic</div>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-xs text-slate-400">Programming</div>
+                <div class="text-base font-bold text-white mt-1">C / Python</div>
+                <div class="text-[11px] text-brand-400">Hardware & Web</div>
+              </div>
+            </div>
+
+            <!-- Interactive Logic Gate Simulator snippet -->
+            <div class="p-4 rounded-xl bg-slate-950/90 border border-slate-800/80">
+              <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+                <span class="font-mono flex items-center gap-1.5"><i data-lucide="zap" class="w-3.5 h-3.5 text-brand-400"></i> Interactive CMOS NAND</span>
+                <span id="gateOutputBadge" class="font-mono text-emerald-400 font-semibold">OUT = 1 (HIGH)</span>
+              </div>
+              <div class="flex items-center justify-around gap-2 text-xs font-mono">
+                <button id="toggleA" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all">
+                  In A: <span id="valA" class="text-brand-400 font-bold">0</span>
+                </button>
+                <span class="text-slate-500 font-bold">&bull;</span>
+                <button id="toggleB" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all">
+                  In B: <span id="valB" class="text-brand-400 font-bold">0</span>
+                </button>
+                <span class="text-slate-500 font-bold">&rarr;</span>
+                <div class="px-3 py-1.5 rounded-lg bg-brand-500/10 border border-brand-500/30 text-brand-300">
+                  NAND: <span id="valOut" class="font-bold text-white">1</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-20 border-t border-slate-800/60 bg-slate-900/30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-brand-400 font-mono text-xs uppercase tracking-widest font-semibold">Profile Overview</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Driven by Curiosity, Engineered with Precision</h2>
+          <div class="w-16 h-1 bg-gradient-to-r from-brand-400 to-accent-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <!-- Bio card -->
+          <div class="lg:col-span-7 glass-card rounded-2xl p-8 space-y-5">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+              <i data-lucide="graduation-cap" class="w-6 h-6 text-brand-400"></i>
+              Academic & Professional Trajectory
+            </h3>
+            <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+              I am an undergraduate student in <strong class="text-white">Electronics and Communication Engineering</strong> at <strong class="text-brand-400">KLE Institute of Technology (KLEIT), Hubballi</strong>. My primary focus lies in digital microelectronics, transistor architecture, circuit synthesis, and microprocessor programming.
+            </p>
+            <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+              My engineering journey bridges the gap between <strong class="text-white">physical hardware</strong> and <strong class="text-white">software algorithms</strong>. Whether implementing low-level firmware in C for 8051 and Arduino controllers or writing Python scripts for simulation analysis, I enjoy solving problems right from silicon physics to user-facing applications.
+            </p>
+            
+            <div class="pt-4 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+                <span class="text-xs text-slate-400 block">Degree</span>
+                <span class="font-bold text-sm text-slate-100">B.Tech in ECE</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+                <span class="text-xs text-slate-400 block">Location</span>
+                <span class="font-bold text-sm text-slate-100">Hubballi, India</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+                <span class="text-xs text-slate-400 block">Aspiration</span>
+                <span class="font-bold text-sm text-slate-100">VLSI / SoC Engineer</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Highlights & Philosophy -->
+          <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+            <div class="glass-card rounded-2xl p-6 border-l-4 border-brand-400">
+              <div class="flex items-center gap-3">
+                <div class="p-2 rounded-lg bg-brand-500/10 text-brand-400">
+                  <i data-lucide="layers" class="w-5 h-5"></i>
+                </div>
+                <h4 class="font-bold text-white text-base">Semiconductor Passion</h4>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-300 mt-2">
+                Fascinated by Moore’s law, sub-micron CMOS scaling, parasitic extraction, and low-power IC architecture.
+              </p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6 border-l-4 border-accent-400">
+              <div class="flex items-center gap-3">
+                <div class="p-2 rounded-lg bg-accent-500/10 text-accent-400">
+                  <i data-lucide="cpu" class="w-5 h-5"></i>
+                </div>
+                <h4 class="font-bold text-white text-base">Microcontrollers & Embedded</h4>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-300 mt-2">
+                Hands-on with Arduino Uno, 8051, timer registers, interrupt service routines, and I2C/SPI sensor interfacing.
+              </p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6 border-l-4 border-emerald-400">
+              <div class="flex items-center gap-3">
+                <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+                  <i data-lucide="code-2" class="w-5 h-5"></i>
+                </div>
+                <h4 class="font-bold text-white text-base">Software Mindset</h4>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-300 mt-2">
+                Strong fundamentals in C and Python programming, bridging embedded device control with dynamic web interfaces.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-20 border-t border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-brand-400 font-mono text-xs uppercase tracking-widest font-semibold">Technical Arsenal</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Skills, Hardware & Software Stacks</h2>
+          <p class="text-slate-400 text-sm mt-3">From silicon schematics to modern programming languages and prototyping tools.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Card 1: Hardware & VLSI -->
+          <div class="glass-card rounded-2xl p-7 hover:border-brand-500/50 transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-400 flex items-center justify-center mb-6">
+              <i data-lucide="cpu" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Hardware & Electronics</h3>
+            <p class="text-xs text-slate-400 mb-6">Physical circuit engineering, microcontrollers, and logic synthesis.</p>
+            
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">VLSI & CMOS Logic</span>
+                  <span class="text-brand-400">88%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-brand-500 to-cyan-400 rounded-full" style="width: 88%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">8051 Microcontroller & Embedded C</span>
+                  <span class="text-brand-400">85%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-brand-500 to-cyan-400 rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">Arduino Prototyping & I2C/SPI</span>
+                  <span class="text-brand-400">90%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-brand-500 to-cyan-400 rounded-full" style="width: 90%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">Digital Logic & Circuit Design</span>
+                  <span class="text-brand-400">84%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-brand-500 to-cyan-400 rounded-full" style="width: 84%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap gap-2">
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">EasyEDA</span>
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Tinkercad</span>
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Multisim</span>
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Oscilloscopes</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Programming & Computational -->
+          <div class="glass-card rounded-2xl p-7 hover:border-accent-500/50 transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-accent-500/10 border border-accent-500/20 text-accent-400 flex items-center justify-center mb-6">
+              <i data-lucide="code" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Programming & Scripting</h3>
+            <p class="text-xs text-slate-400 mb-6">Algorithmic thinking, low-level execution, and automation scripts.</p>
+
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">C Language (Pointers, Memory)</span>
+                  <span class="text-accent-400">92%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-accent-500 to-indigo-400 rounded-full" style="width: 92%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">Python (Algorithms & Scripting)</span>
+                  <span class="text-accent-400">86%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-accent-500 to-indigo-400 rounded-full" style="width: 86%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">Data Structures & Logic</span>
+                  <span class="text-accent-400">80%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-accent-500 to-indigo-400 rounded-full" style="width: 80%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">Assembly / Keil uVision</span>
+                  <span class="text-accent-400">78%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-accent-500 to-indigo-400 rounded-full" style="width: 78%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap gap-2">
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">C++</span>
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">OOP</span>
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">GCC</span>
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">GDB</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Web & Developer Tooling -->
+          <div class="glass-card rounded-2xl p-7 hover:border-emerald-500/50 transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-6">
+              <i data-lucide="globe" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Web & Engineering Tools</h3>
+            <p class="text-xs text-slate-400 mb-6">Interactive interfaces, version control, and development environments.</p>
+
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">HTML5 / CSS3 / JavaScript</span>
+                  <span class="text-emerald-400">85%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">Flask (Python Backend API)</span>
+                  <span class="text-emerald-400">80%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width: 80%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">Git & GitHub Versioning</span>
+                  <span class="text-emerald-400">88%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width: 88%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">Linux & Shell Command Line</span>
+                  <span class="text-emerald-400">82%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width: 82%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap gap-2">
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Tailwind CSS</span>
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">VS Code</span>
+              <span class="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Canvas 2D</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-20 border-t border-slate-800/60 bg-slate-900/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <span class="text-brand-400 font-mono text-xs uppercase tracking-widest font-semibold">Real-world Works</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Featured Projects</h2>
+            <p class="text-slate-400 text-sm mt-2">Explore embedded hardware prototypes, digital circuits, and web simulators.</p>
+          </div>
+
+          <!-- Project Filter Tabs -->
+          <div class="mt-6 md:mt-0 flex items-center gap-2 p-1 rounded-xl bg-slate-900 border border-slate-800">
+            <button onclick="filterProjects('all')" class="filter-btn active px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all bg-brand-500 text-slate-950 font-bold" data-filter="all">All</button>
+            <button onclick="filterProjects('hardware')" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono font-medium text-slate-400 hover:text-white transition-all" data-filter="hardware">Hardware / ECE</button>
+            <button onclick="filterProjects('software')" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono font-medium text-slate-400 hover:text-white transition-all" data-filter="software">Software / Web</button>
+          </div>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsContainer">
+          
+          <!-- Project 1: IR Object Counter -->
+          <div class="project-card hardware glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-500/50 transition-all flex flex-col justify-between group">
+            <div class="p-6">
+              <div class="h-44 rounded-xl bg-slate-900/80 border border-slate-800 p-4 relative overflow-hidden flex flex-col justify-between">
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                  <span class="flex items-center gap-1.5 text-brand-400"><i data-lucide="radio" class="w-4 h-4"></i> Hardware Prototype</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px]">Verified Working</span>
+                </div>
+                
+                <!-- Circuit visual preview inside card -->
+                <div class="flex items-center justify-center space-x-6 my-2">
+                  <div class="text-center">
+                    <div class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-cyan-400 mx-auto mb-1">
+                      <i data-lucide="eye" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-[10px] text-slate-400 font-mono">IR Sensor</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[10px] text-brand-400 font-mono">Pulse &rarr;</span>
+                    <div class="w-12 h-0.5 bg-gradient-to-r from-cyan-500 to-indigo-500"></div>
+                  </div>
+                  <div class="text-center">
+                    <div class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-indigo-400 mx-auto mb-1">
+                      <i data-lucide="monitor" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-[10px] text-slate-400 font-mono">16x2 LCD</span>
+                  </div>
+                </div>
+
+                <div class="text-[11px] font-mono text-slate-400 text-center bg-slate-950/70 py-1 rounded">
+                  Arduino Uno + Software Debouncing
+                </div>
+              </div>
+
+              <div class="mt-5 space-y-2">
+                <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors">
+                  IR-Based Automated Object Counter
+                </h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Engineered an automated optical counting system utilizing an infrared emitter-detector pair, Arduino microcontroller, custom debouncing logic in C++, and a 16x2 I2C LCD interface to prevent false-triggers in production tracking.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="px-2.5 py-0.5 rounded-md bg-brand-500/10 text-brand-400 text-[11px] font-mono">Arduino Uno</span>
+                <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono">Embedded C++</span>
+                <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono">IR Optical Sensor</span>
+                <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono">I2C LCD</span>
+              </div>
+            </div>
+
+            <div class="p-6 pt-0">
+              <button onclick="openProjectModal('ir_counter')" class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-brand-300 text-xs font-mono font-semibold transition-all border border-slate-700 flex items-center justify-center gap-2">
+                <i data-lucide="play" class="w-4 h-4"></i> Launch Interactive Sim
+              </button>
+            </div>
+          </div>
+
+          <!-- Project 2: Web Tennis Game Simulator -->
+          <div class="project-card software glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-500/50 transition-all flex flex-col justify-between group">
+            <div class="p-6">
+              <div class="h-44 rounded-xl bg-slate-900/80 border border-slate-800 p-4 relative overflow-hidden flex flex-col justify-between">
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                  <span class="flex items-center gap-1.5 text-accent-400"><i data-lucide="gamepad-2" class="w-4 h-4"></i> Web Application</span>
+                  <span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[10px]">Playable</span>
+                </div>
+
+                <!-- Tennis Court Canvas Mock Graphic -->
+                <div class="w-full h-20 rounded bg-emerald-950/70 border border-emerald-600/40 relative flex items-center justify-center">
+                  <div class="absolute inset-y-0 left-1/2 w-0.5 bg-white/40 border-dashed"></div>
+                  <div class="absolute left-2 top-4 w-1.5 h-7 bg-brand-400 rounded-sm"></div>
+                  <div class="absolute right-2 bottom-4 w-1.5 h-7 bg-accent-400 rounded-sm"></div>
+                  <div class="w-3 h-3 rounded-full bg-amber-400 shadow-md animate-bounce"></div>
+                </div>
+
+                <div class="text-[11px] font-mono text-slate-400 text-center bg-slate-950/70 py-1 rounded">
+                  Flask Backend Routing + Canvas 2D Physics
+                </div>
+              </div>
+
+              <div class="mt-5 space-y-2">
+                <h3 class="text-xl font-bold text-white group-hover:text-accent-400 transition-colors">
+                  Web Tennis Game Simulator
+                </h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Interactive retro-style 2D tennis game with realistic collision detection, smooth velocity physics, responsive keyboard/touch paddle controls, and Flask architecture for game state serving.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="px-2.5 py-0.5 rounded-md bg-accent-500/10 text-accent-400 text-[11px] font-mono">Python</span>
+                <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono">Flask</span>
+                <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono">HTML5 Canvas</span>
+                <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono">CSS3 / JS</span>
+              </div>
+            </div>
+
+            <div class="p-6 pt-0">
+              <button onclick="openProjectModal('tennis_game')" class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-accent-300 text-xs font-mono font-semibold transition-all border border-slate-700 flex items-center justify-center gap-2">
+                <i data-lucide="play" class="w-4 h-4"></i> Play Tennis Game Inside Web
+              </button>
+            </div>
+          </div>
+
+          <!-- Project 3: CMOS Logic & VLSI Circuit Design -->
+          <div class="project-card hardware glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-500/50 transition-all flex flex-col justify-between group">
+            <div class="p-6">
+              <div class="h-44 rounded-xl bg-slate-900/80 border border-slate-800 p-4 relative overflow-hidden flex flex-col justify-between">
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                  <span class="flex items-center gap-1.5 text-brand-400"><i data-lucide="cpu" class="w-4 h-4"></i> VLSI Simulation</span>
+                  <span class="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20 text-[10px]">Cadence/SPICE</span>
+                </div>
+
+                <!-- CMOS Schematic Vector Representation -->
+                <div class="flex items-center justify-center py-2">
+                  <div class="p-2 rounded-lg bg-slate-950 border border-slate-800 text-center font-mono text-xs text-brand-300 space-y-1">
+                    <span class="text-[10px] text-amber-400 font-bold block">VDD (Supply)</span>
+                    <div class="px-3 py-1 bg-brand-500/20 rounded border border-brand-500/40 text-[11px]">PMOS Network</div>
+                    <div class="text-[10px] text-slate-500">&darr; Vout &darr;</div>
+                    <div class="px-3 py-1 bg-accent-500/20 rounded border border-accent-500/40 text-[11px]">NMOS Network</div>
+                    <span class="text-[10px] text-slate-400 font-bold block">GND</span>
+                  </div>
+                </div>
+
+                <div class="text-[11px] font-mono text-slate-400 text-center bg-slate-950/70 py-1 rounded">
+                  Static CMOS Pull-Up & Pull-Down Networks
+                </div>
+              </div>
+
+              <div class="mt-5 space-y-2">
+                <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors">
+                  CMOS Logic & Digital Synthesis
+                </h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Design and analysis of basic & complex logic gates (Inverter, NAND, NOR, XOR) at transistor level. Analyzed propagation delays, static power dissipation, and noise margins across voltage variations.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="px-2.5 py-0.5 rounded-md bg-brand-500/10 text-brand-400 text-[11px] font-mono">VLSI</span>
+                <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono">MOSFET Physics</span>
+                <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono">SPICE Simulation</span>
+                <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono">Timing Margins</span>
+              </div>
+            </div>
+
+            <div class="p-6 pt-0">
+              <button onclick="openProjectModal('cmos_vlsi')" class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-brand-300 text-xs font-mono font-semibold transition-all border border-slate-700 flex items-center justify-center gap-2">
+                <i data-lucide="layers" class="w-4 h-4"></i> View Circuit Architecture
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="playground" class="py-20 border-t border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-mono bg-brand-500/10 text-brand-400 border border-brand-500/30 mb-3">
+            <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+            <span>Engineering Lab Terminal</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Interactive Python & ECE Playground</h2>
+          <p class="text-slate-400 text-sm mt-3">
+            Run real-time electronic parameter calculations and scripts directly inside your browser. Select a preset or tweak the code.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
+          <!-- Terminal Header -->
+          <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+              <span class="font-mono text-xs text-slate-400 ml-2 font-semibold">prajwal_terminal.py &mdash; Python 3.11 Runtime</span>
+            </div>
+
+            <!-- Preset Scripts Selector -->
+            <div class="flex items-center space-x-2 text-xs font-mono">
+              <label for="scriptSelect" class="text-slate-400">Preset Script:</label>
+              <select id="scriptSelect" onchange="loadPresetScript()" class="bg-slate-800 text-slate-200 border border-slate-700 rounded-lg px-2.5 py-1 focus:outline-none focus:border-brand-400">
+                <option value="rc_filter">RC Filter Cutoff & Time Constant</option>
+                <option value="microcontroller_clock">8051 Machine Cycle Calculator</option>
+                <option value="cmos_power">CMOS Dynamic Power Dissipation</option>
+                <option value="custom_greeting">Prajwal System Bio & Motto</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Code Editor and Console Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <!-- Code Input Side -->
+            <div class="lg:col-span-7 p-4 bg-slate-950/80 border-b lg:border-b-0 lg:border-r border-slate-800">
+              <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800/80">
+                <span class="text-xs font-mono text-slate-400 flex items-center gap-1.5">
+                  <i data-lucide="edit-3" class="w-3.5 h-3.5 text-brand-400"></i> Script Source (Editable)
+                </span>
+                <button onclick="runPythonScript()" class="px-4 py-1.5 rounded-lg bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold font-mono text-xs flex items-center gap-1.5 shadow transition-all">
+                  <i data-lucide="play" class="w-3.5 h-3.5"></i> Run Script
+                </button>
+              </div>
+              <textarea id="pythonCodeInput" rows="11" class="w-full bg-transparent font-mono text-xs sm:text-sm text-cyan-200 focus:outline-none resize-none leading-relaxed" spellcheck="false"></textarea>
+            </div>
+
+            <!-- Terminal Output Side -->
+            <div class="lg:col-span-5 p-4 bg-slate-900/60 font-mono text-xs flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800">
+                  <span class="text-slate-400 flex items-center gap-1.5">
+                    <i data-lucide="terminal-square" class="w-3.5 h-3.5 text-emerald-400"></i> Execution Stdout
+                  </span>
+                  <button onclick="clearTerminal()" class="text-[10px] text-slate-400 hover:text-white transition-colors">Clear</button>
+                </div>
+                <div id="terminalStdout" class="text-emerald-400 space-y-1.5 min-h-[180px] overflow-y-auto max-h-56 leading-relaxed">
+                  <p class="text-slate-500">// Press "Run Script" to execute calculations...</p>
+                </div>
+              </div>
+              <div class="mt-4 pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-500">
+                <span>Status: <span id="runStatus" class="text-emerald-400">Ready</span></span>
+                <span>ECE KLEIT Tools</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="passions" class="py-20 border-t border-slate-800/60 bg-slate-900/30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-accent-400 font-mono text-xs uppercase tracking-widest font-semibold">Life & Drive</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Beyond Engineering & Tech</h2>
+          <p class="text-slate-400 text-sm mt-3">
+            Discipline, strategic intuition, and focus honed outside the electronics laboratory.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Passion 1: Football -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-brand-400/40 transition-all transform hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-400 flex items-center justify-center mb-4">
+              <i data-lucide="trophy" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Football Enthusiast</h3>
+            <span class="text-xs text-brand-400 font-mono block mb-3">Tactical Play & Messi Admirer</span>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Passionate football devotee inspired by Lionel Messi’s spatial vision and game intelligence. Playing and watching football teaches instantaneous decision-making under high pressure.
+            </p>
+          </div>
+
+          <!-- Passion 2: Gym & Fitness -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-accent-400/40 transition-all transform hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-accent-500/10 border border-accent-500/20 text-accent-400 flex items-center justify-center mb-4">
+              <i data-lucide="dumbbell" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Gym & Strength Training</h3>
+            <span class="text-xs text-accent-400 font-mono block mb-3">Consistency & Grit</span>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Committed to daily physical strength, hypertrophy, and discipline. The mindset of progressive overload directly mirrors incremental optimization in engineering circuits.
+            </p>
+          </div>
+
+          <!-- Passion 3: Technical Analysis & Trading -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-emerald-400/40 transition-all transform hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+              <i data-lucide="trending-up" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Technical Market Analysis</h3>
+            <span class="text-xs text-emerald-400 font-mono block mb-3">Candlesticks & Indicators</span>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Studying financial market cycles, price action, Fibonacci retracements, and candlestick patterns. It strengthens probabilistic thinking, risk management, and quantitative patience.
+            </p>
+          </div>
+
+          <!-- Passion 4: Speedcubing -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-amber-400/40 transition-all transform hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mb-4">
+              <i data-lucide="box" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Speedcubing</h3>
+            <span class="text-xs text-amber-400 font-mono block mb-3">3x3 Algorithm Memorization</span>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Enthusiastic Rubik's cube solver practicing CFOP methods. Cultivates spatial memory, rapid pattern recognition, finger dexterity, and fast systematic execution.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-20 border-t border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <!-- Contact Details Column -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="text-brand-400 font-mono text-xs uppercase tracking-widest font-semibold">Let's Connect</span>
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Get in Touch with Prajwal</h2>
+              <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                Whether you want to discuss VLSI internships, microcontroller architectures, Python development, or collaborate on a project, feel free to drop a message!
+              </p>
+            </div>
+
+            <div class="space-y-4 pt-4">
+              <div class="flex items-center space-x-4 p-4 rounded-xl glass-card">
+                <div class="w-10 h-10 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-xs text-slate-400 block font-mono">Location</span>
+                  <span class="text-sm font-semibold text-white">Hubballi, Karnataka, India</span>
+                </div>
+              </div>
+
+              <div class="flex items-center space-x-4 p-4 rounded-xl glass-card">
+                <div class="w-10 h-10 rounded-lg bg-accent-500/10 text-accent-400 flex items-center justify-center">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-xs text-slate-400 block font-mono">Email Address</span>
+                  <span class="text-sm font-semibold text-white">prajwal.narappanavar@example.com</span>
+                </div>
+              </div>
+
+              <div class="flex items-center space-x-4 p-4 rounded-xl glass-card">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                  <i data-lucide="building-2" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-xs text-slate-400 block font-mono">College</span>
+                  <span class="text-sm font-semibold text-white">KLE Institute of Technology (KLEIT)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form Column -->
+          <div class="lg:col-span-7">
+            <div class="glass-card rounded-2xl p-8 border border-slate-800">
+              <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <i data-lucide="send" class="w-5 h-5 text-brand-400"></i> Send a Direct Message
+              </h3>
+
+              <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-mono text-slate-300 mb-1.5" for="senderName">Your Name *</label>
+                    <input type="text" id="senderName" required placeholder="Alex Turner" class="w-full px-4 py-2.5 rounded-xl bg-slate-950/70 border border-slate-700/80 text-white text-sm focus:outline-none focus:border-brand-400 transition-colors" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-mono text-slate-300 mb-1.5" for="senderEmail">Your Email *</label>
+                    <input type="email" id="senderEmail" required placeholder="alex@domain.com" class="w-full px-4 py-2.5 rounded-xl bg-slate-950/70 border border-slate-700/80 text-white text-sm focus:outline-none focus:border-brand-400 transition-colors" />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 mb-1.5" for="subject">Subject / Inquiry</label>
+                  <input type="text" id="subject" placeholder="Project Collaboration / VLSI Discussion" class="w-full px-4 py-2.5 rounded-xl bg-slate-950/70 border border-slate-700/80 text-white text-sm focus:outline-none focus:border-brand-400 transition-colors" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 mb-1.5" for="message">Message *</label>
+                  <textarea id="message" rows="4" required placeholder="Hello Prajwal, I came across your portfolio and wanted to discuss..." class="w-full px-4 py-2.5 rounded-xl bg-slate-950/70 border border-slate-700/80 text-white text-sm focus:outline-none focus:border-brand-400 transition-colors resize-none"></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-500 to-accent-600 text-slate-950 font-bold text-sm hover:opacity-95 transition-opacity shadow-lg shadow-brand-500/20 flex items-center justify-center gap-2">
+                  <i data-lucide="send" class="w-4 h-4"></i> Send Message
+                </button>
+              </form>
+
+              <!-- In-page Toast Feedback -->
+              <div id="formSuccessToast" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono flex items-center gap-3">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+                <span>Thank you! Your message has been safely received. Prajwal will reply soon.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="projectModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="relative glass-card rounded-2xl max-w-2xl w-full p-6 sm:p-8 border border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <button onclick="closeProjectModal()" class="absolute top-5 right-5 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="modalContent">
+        <!-- Injected dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-800/80 py-8 bg-slate-950 relative z-10 text-center text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <div class="w-6 h-6 rounded bg-brand-500/20 text-brand-400 font-mono font-bold flex items-center justify-center text-xs">
+          PAN
+        </div>
+        <span class="text-slate-300 font-semibold">Prajwal A Narappanavar</span>
+        <span>&bull; ECE KLEIT</span>
+      </div>
+
+      <p class="font-mono text-[11px]">
+        Designed & Built with HTML5, CSS3, JavaScript & Python Concepts &copy; 2026. All rights reserved.
+      </p>
+
+      <div class="flex items-center space-x-3">
+        <a href="#hero" class="text-slate-400 hover:text-brand-400 transition-colors">Back to top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Dynamic Typing Role Subheading
+    const dynamicRoles = [
+      "VLSI Design & CMOS Logic",
+      "Embedded C & 8051 Microcontrollers",
+      "Arduino Hardware Systems",
+      "Python Algorithmic Simulations",
+      "Hardware-Software Co-Design"
+    ];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const dynamicRolesElem = document.getElementById("dynamicRoles");
+
+    function typeRolesEffect() {
+      const currentRole = dynamicRoles[roleIndex];
+      if (isDeleting) {
+        dynamicRolesElem.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        dynamicRolesElem.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typingSpeed = isDeleting ? 40 : 80;
+
+      if (!isDeleting && charIndex === currentRole.length) {
+        typingSpeed = 1800; // Pause at full word
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % dynamicRoles.length;
+        typingSpeed = 400;
+      }
+
+      setTimeout(typeRolesEffect, typingSpeed);
+    }
+    typeRolesEffect();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Theme Toggle (Dark / Light mock support)
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
+    let isDark = true;
+    themeToggleBtn.addEventListener("click", () => {
+      isDark = !isDark;
+      if (isDark) {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+        themeToggleBtn.innerHTML = '<i data-lucide="sun" class="w-5 h-5"></i>';
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
+        themeToggleBtn.innerHTML = '<i data-lucide="moon" class="w-5 h-5"></i>';
+      }
+      lucide.createIcons();
+    });
+
+    // Interactive Hero NAND Gate logic
+    let gateA = 0;
+    let gateB = 0;
+    const toggleA = document.getElementById("toggleA");
+    const toggleB = document.getElementById("toggleB");
+    const valA = document.getElementById("valA");
+    const valB = document.getElementById("valB");
+    const valOut = document.getElementById("valOut");
+    const gateOutputBadge = document.getElementById("gateOutputBadge");
+
+    function updateGate() {
+      valA.textContent = gateA;
+      valB.textContent = gateB;
+      const nandResult = !(gateA && gateB) ? 1 : 0;
+      valOut.textContent = nandResult;
+      if (nandResult === 1) {
+        gateOutputBadge.textContent = "OUT = 1 (HIGH)";
+        gateOutputBadge.className = "font-mono text-emerald-400 font-semibold";
+      } else {
+        gateOutputBadge.textContent = "OUT = 0 (LOW)";
+        gateOutputBadge.className = "font-mono text-rose-400 font-semibold";
+      }
+    }
+    toggleA.addEventListener("click", () => {
+      gateA = gateA === 0 ? 1 : 0;
+      updateGate();
+    });
+    toggleB.addEventListener("click", () => {
+      gateB = gateB === 0 ? 1 : 0;
+      updateGate();
+    });
+
+    // Project Category Filtering
+    function filterProjects(category) {
+      const cards = document.querySelectorAll(".project-card");
+      const buttons = document.querySelectorAll(".filter-btn");
+
+      buttons.forEach(btn => {
+        if (btn.getAttribute("data-filter") === category) {
+          btn.className = "filter-btn active px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all bg-brand-500 text-slate-950 font-bold";
+        } else {
+          btn.className = "filter-btn px-4 py-2 rounded-lg text-xs font-mono font-medium text-slate-400 hover:text-white transition-all";
+        }
+      });
+
+      cards.forEach(card => {
+        if (category === "all" || card.classList.contains(category)) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+    }
+
+    const presetScripts = {
+      rc_filter: `# ECE Circuit Analysis: Low-Pass RC Filter Cutoff
+import math
+
+# Component values
+resistor_ohms = 10000.0  # 10 kOhms
+capacitor_farads = 100e-9 # 100 nF
+
+# Calculate Cutoff Frequency (fc = 1 / (2 * pi * R * C))
+fc = 1.0 / (2.0 * math.pi * resistor_ohms * capacitor_farads)
+
+# Calculate Time Constant (tau = R * C)
+tau = resistor_ohms * capacitor_farads
+
+print("[✓] Circuit Model: 1st Order RC Low-Pass")
+print(f"Resistance (R)   : {resistor_ohms:.1f} Ohms")
+print(f"Capacitance (C)  : {capacitor_farads * 1e9:.1f} nF")
+print(f"Time Constant (τ): {tau * 1000:.3f} ms")
+print(f"Cutoff Frequency : {fc:.2f} Hz (-3dB point)")
+`,
+      microcontroller_clock: `# 8051 Microcontroller Machine Cycle Timing
+crystal_freq_mhz = 11.0592 # Classic 8051 crystal frequency in MHz
+
+# Standard 8051 takes 12 oscillator periods for 1 machine cycle
+osc_period_us = 1.0 / crystal_freq_mhz
+machine_cycle_us = 12.0 * osc_period_us
+
+# Timer 0 Delay Count for 1 millisecond overflow (Mode 1 - 16 bit)
+target_delay_us = 1000.0
+counts_needed = target_delay_us / machine_cycle_us
+initial_timer_value = int(65536 - counts_needed)
+
+print("[✓] Microcontroller: 8051 Architecture")
+print(f"Crystal Frequency: {crystal_freq_mhz:.4f} MHz")
+print(f"Machine Cycle    : {machine_cycle_us:.4f} μs")
+print(f"Timer 0 (1ms) TH0/TL0 Hex Value: 0x{initial_timer_value:04X}")
+`,
+      cmos_power: `# VLSI CMOS Dynamic Power Dissipation: P = C * V^2 * f
+capacitance_load_pf = 15.0  # 15 pF
+supply_voltage_v = 1.8      # 1.8 Volts
+clock_freq_mhz = 100.0      # 100 MHz clock
+
+# Dynamic switching power calculation
+power_watts = (capacitance_load_pf * 1e-12) * (supply_voltage_v ** 2) * (clock_freq_mhz * 1e6)
+power_mw = power_watts * 1000.0
+
+print("[✓] VLSI CMOS Power Estimation")
+print(f"Supply Voltage (Vdd): {supply_voltage_v} V")
+print(f"Switching Load (C)  : {capacitance_load_pf} pF")
+print(f"Clock Frequency (f) : {clock_freq_mhz} MHz")
+print(f"Dynamic Power Dissipated: {power_mw:.3f} mW")
+`,
+      custom_greeting: `# Prajwal A Narappanavar - System Welcome & Motto
+scholar = {
+    "name": "Prajwal A Narappanavar",
+    "degree": "B.Tech in Electronics & Communication Engineering",
+    "college": "KLEIT Hubballi",
+    "passions": ["VLSI Design", "Firmware", "Football (Messi)", "Gym"]
+}
+
+print(f">> Initializing Bio for: {scholar['name']}")
+print(f">> Affiliation: {scholar['degree']} @ {scholar['college']}")
+print(f">> Core Philosophy: 'Master the silicon, orchestrate the code.'")
+print(">> System State: Ready for Innovation & Research.")
+`
+    };
+
+    const pythonCodeInput = document.getElementById("pythonCodeInput");
+    const terminalStdout = document.getElementById("terminalStdout");
+    const scriptSelect = document.getElementById("scriptSelect");
+    const runStatus = document.getElementById("runStatus");
+
+    function loadPresetScript() {
+      const selected = scriptSelect.value;
+      pythonCodeInput.value = presetScripts[selected] || "";
+    }
+    loadPresetScript();
+
+    function clearTerminal() {
+      terminalStdout.innerHTML = '<p class="text-slate-500">// Terminal cleared.</p>';
+    }
+
+    // Client-side Python Parser & Simulator
+    function runPythonScript() {
+      runStatus.textContent = "Executing...";
+      runStatus.className = "text-amber-400";
+      terminalStdout.innerHTML = "";
+
+      setTimeout(() => {
+        try {
+          const rawCode = pythonCodeInput.value;
+          const outputLines = [];
+
+          // Parse variable definitions and print statements safely
+          const lines = rawCode.split("\n");
+          let scope = {
+            math: Math,
+            pi: Math.PI
+          };
+
+          for (let line of lines) {
+            let trimmed = line.trim();
+            if (!trimmed || trimmed.startsWith("#")) continue;
+
+            // Handle print statements
+            if (trimmed.startsWith("print(")) {
+              let inside = trimmed.slice(6, -1).trim();
+
+              // Handle f-strings or direct strings
+              if (inside.startsWith('f"') || inside.startsWith("f'")) {
+                let text = inside.slice(2, -1);
+                // Replace {var} with evaluated value
+                let evaluated = text.replace(/\{([^}]+)\}/g, (match, expr) => {
+                  try {
+                    let cleanExpr = expr.trim();
+                    // Handle format specifiers like :.2f
+                    let format = "";
+                    if (cleanExpr.includes(":")) {
+                      const parts = cleanExpr.split(":");
+                      cleanExpr = parts[0];
+                      format = parts[1];
+                    }
+                    let res = evalInScope(cleanExpr, scope);
+                    if (format.includes(".1f")) res = Number(res).toFixed(1);
+                    else if (format.includes(".2f")) res = Number(res).toFixed(2);
+                    else if (format.includes(".3f")) res = Number(res).toFixed(3);
+                    else if (format.includes(".4f")) res = Number(res).toFixed(4);
+                    else if (format.includes("04X")) res = Number(res).toString(16).toUpperCase().padStart(4, '0');
+                    return res;
+                  } catch (e) {
+                    return `[eval err: ${expr}]`;
+                  }
+                });
+                outputLines.push(evaluated);
+              } else if (inside.startsWith('"') || inside.startsWith("'")) {
+                outputLines.push(inside.slice(1, -1));
+              } else {
+                try {
+                  outputLines.push(String(evalInScope(inside, scope)));
+                } catch(e) {
+                  outputLines.push(inside);
+                }
+              }
+            } else if (trimmed.includes("=")) {
+              // Variable assignment
+              let [varName, expr] = trimmed.split("=").map(s => s.trim());
+              if (/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(varName)) {
+                try {
+                  scope[varName] = evalInScope(expr, scope);
+                } catch (e) {
+                  // Fallback for objects/dicts
+                  try {
+                    let sanitizedJson = expr.replace(/'/g, '"');
+                    scope[varName] = JSON.parse(sanitizedJson);
+                  } catch(err) {
+                    // Ignore assignment error in mini parser
+                  }
+                }
+              }
+            }
+          }
+
+          if (outputLines.length === 0) {
+            outputLines.push(">>> Execution completed with no print outputs.");
+          }
+
+          outputLines.forEach(line => {
+            const p = document.createElement("p");
+            p.className = line.startsWith("[✓]") ? "text-cyan-300 font-bold" : "text-emerald-400";
+            p.textContent = line;
+            terminalStdout.appendChild(p);
+          });
+
+          runStatus.textContent = "Success (0)";
+          runStatus.className = "text-emerald-400";
+
+        } catch (err) {
+          const p = document.createElement("p");
+          p.className = "text-rose-400";
+          p.textContent = "Execution Error: " + err.message;
+          terminalStdout.appendChild(p);
+          runStatus.textContent = "Error";
+          runStatus.className = "text-rose-400";
+        }
+      }, 250);
+    }
+
+    function evalInScope(expr, scope) {
+      // Replace Python exponentiation ** with Math.pow
+      let jsExpr = expr.replace(/\*\*/g, "^");
+      jsExpr = jsExpr.replace(/math\.pi/g, "Math.PI");
+      jsExpr = jsExpr.replace(/int\(/g, "Math.floor(");
+      // Replace power expression
+      jsExpr = jsExpr.replace(/([0-9a-zA-Z_.]+)\s*\^\s*([0-9a-zA-Z_.]+)/g, "Math.pow($1, $2)");
+
+      const keys = Object.keys(scope);
+      const values = Object.values(scope);
+      return new Function(...keys, `return (${jsExpr});`)(...values);
+    }
+
+    const projectModal = document.getElementById("projectModal");
+    const modalContent = document.getElementById("modalContent");
+
+    let liveTennisGameLoop = null;
+
+    function openProjectModal(projectId) {
+      projectModal.classList.remove("hidden");
+
+      if (projectId === 'ir_counter') {
+        modalContent.innerHTML = `
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="p-2 rounded-xl bg-brand-500/10 text-brand-400">
+                <i data-lucide="radio" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">IR-Based Automated Object Counter</h3>
+                <p class="text-xs text-brand-400 font-mono">Arduino Uno | Software Debounce | 16x2 LCD</p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-300">
+              Test the optical beam break simulation below. When an object passes through the IR beam, the state is registered with hardware debounce filtering and the count increases on the simulated LCD display.
+            </p>
+
+            <!-- Interactive Live Counter Demo -->
+            <div class="p-6 rounded-xl bg-slate-950 border border-slate-800 space-y-4">
+              <div class="w-full bg-emerald-950/60 border border-emerald-500/40 rounded-lg p-3 font-mono text-center shadow-inner">
+                <div class="text-[10px] text-emerald-400 tracking-wider">16x2 I2C LCD SIMULATOR</div>
+                <div class="text-lg font-bold text-emerald-300 mt-1">OBJECT COUNT: <span id="simCountVal" class="text-white text-xl">000</span></div>
+                <div class="text-[10px] text-emerald-500 mt-0.5">STATUS: SENSOR READY</div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+                <button id="beamBreakBtn" onclick="simulateObjectPass()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs font-mono flex items-center justify-center gap-2 transition-transform transform active:scale-95">
+                  <i data-lucide="scan" class="w-4 h-4"></i> Break IR Beam (Pass Object)
+                </button>
+                <button onclick="resetSimCount()" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono">
+                  Reset Count
+                </button>
+              </div>
+              <div id="sensorFeedback" class="text-[11px] font-mono text-slate-400 text-center">Beam state: Continuous (No obstruction)</div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-1">
+              <span class="font-bold text-white block">Key Technical Highlights:</span>
+              <ul class="list-disc list-inside space-y-0.5 text-slate-400">
+                <li>Eliminated bounce noise with a 50ms software threshold filter in Embedded C++.</li>
+                <li>Used I2C PCF8574 backpack to reduce pin count from 16 to 2 pins (SDA/SCL).</li>
+                <li>Reliable detection speed up to 25 items per second in packaging workflows.</li>
+              </ul>
+            </div>
+          </div>
+        `;
+      } else if (projectId === 'tennis_game') {
+        modalContent.innerHTML = `
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="p-2 rounded-xl bg-accent-500/10 text-accent-400">
+                <i data-lucide="gamepad-2" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">Web Tennis Game Simulator</h3>
+                <p class="text-xs text-accent-400 font-mono">Python / Flask Architecture + Canvas 2D Engine</p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-300">
+              Interactive court simulator: Use your mouse or touch the canvas up and down to position the green player paddle!
+            </p>
+
+            <div class="relative bg-slate-950 rounded-xl overflow-hidden border border-slate-800">
+              <canvas id="tennisCanvas" width="560" height="260" class="w-full block bg-slate-950 cursor-pointer"></canvas>
+            </div>
+
+            <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+              <span>Player: <strong id="pScore" class="text-brand-400">0</strong> | AI: <strong id="aiScore" class="text-rose-400">0</strong></span>
+              <span class="text-[11px]">Move pointer / swipe paddle</span>
+            </div>
+          </div>
+        `;
+        setTimeout(initTennisGame, 100);
+      } else if (projectId === 'cmos_vlsi') {
+        modalContent.innerHTML = `
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="p-2 rounded-xl bg-purple-500/10 text-purple-400">
+                <i data-lucide="layers" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">CMOS Logic & Digital Synthesis</h3>
+                <p class="text-xs text-purple-400 font-mono">Transistor Level Inverter / NAND Characterization</p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-300">
+              Detailed exploration of complementary metal-oxide-semiconductor topologies. Below is the static DC voltage transfer characteristic curve (VTC) of a CMOS inverter:
+            </p>
+
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-center font-mono">
+              <div class="text-xs text-slate-400 mb-2 font-bold">DC Transfer Curve (Vout vs Vin)</div>
+              <!-- SVG Schematic / Plot representation -->
+              <svg viewBox="0 0 300 140" class="w-full max-w-sm mx-auto stroke-current text-brand-400">
+                <!-- Axes -->
+                <line x1="30" y1="120" x2="280" y2="120" stroke="#475569" stroke-width="2"/>
+                <line x1="30" y1="120" x2="30" y2="10" stroke="#475569" stroke-width="2"/>
+                <!-- Labels -->
+                <text x="260" y="135" fill="#94a3b8" font-size="10" font-family="monospace">Vin</text>
+                <text x="10" y="20" fill="#94a3b8" font-size="10" font-family="monospace">Vout</text>
+                <text x="140" y="135" fill="#06b6d4" font-size="9" font-family="monospace">Vth (Switching)</text>
+                <!-- VTC Curve -->
+                <path d="M 30,20 C 110,20 135,25 150,70 C 165,115 190,120 270,120" fill="none" stroke="#22d3ee" stroke-width="3" />
+                <circle cx="150" cy="70" r="4" fill="#f43f5e" />
+              </svg>
+              <div class="text-[10px] text-slate-500 mt-2">V_TH = V_DD / 2 for symmetric (W/L)p / (W/L)n ratios</div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-1">
+              <span class="font-bold text-white block">Key Research Insights:</span>
+              <ul class="list-disc list-inside space-y-0.5 text-slate-400">
+                <li>Balanced electron and hole mobility by setting (W/L)p ≈ 2.5 × (W/L)n.</li>
+                <li>Zero static DC power dissipation apart from subthreshold leakage current.</li>
+                <li>High noise margins NM_L and NM_H providing rock-solid digital immunity.</li>
+              </ul>
+            </div>
+          </div>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    function closeProjectModal() {
+      if (liveTennisGameLoop) {
+        cancelAnimationFrame(liveTennisGameLoop);
+        liveTennisGameLoop = null;
+      }
+      projectModal.classList.add("hidden");
+    }
+
+    // Modal Background Click Dismiss
+    projectModal.addEventListener("click", (e) => {
+      if (e.target === projectModal) {
+        closeProjectModal();
+      }
+    });
+
+    // Object Counter Simulator Logic
+    let currentSimCount = 0;
+    function simulateObjectPass() {
+      const simCountVal = document.getElementById("simCountVal");
+      const sensorFeedback = document.getElementById("sensorFeedback");
+      currentSimCount++;
+      if (simCountVal) {
+        simCountVal.textContent = String(currentSimCount).padStart(3, "0");
+      }
+      if (sensorFeedback) {
+        sensorFeedback.innerHTML = `<span class="text-amber-400 font-bold">⚠ BEAM BROKEN:</span> Pulse detected &rarr; Debounced & Counted!`;
+        setTimeout(() => {
+          if (sensorFeedback) {
+            sensorFeedback.innerHTML = `Beam state: Continuous (No obstruction)`;
+          }
+        }, 600);
+      }
+    }
+    function resetSimCount() {
+      currentSimCount = 0;
+      const simCountVal = document.getElementById("simCountVal");
+      if (simCountVal) simCountVal.textContent = "000";
+    }
+
+    // Tennis Mini Game Implementation inside Canvas
+    function initTennisGame() {
+      const canvas = document.getElementById("tennisCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+
+      let paddleHeight = 50;
+      let paddleWidth = 8;
+      let playerY = (canvas.height - paddleHeight) / 2;
+      let aiY = (canvas.height - paddleHeight) / 2;
+
+      let ballX = canvas.width / 2;
+      let ballY = canvas.height / 2;
+      let ballSpeedX = 4;
+      let ballSpeedY = 2.5;
+      let ballRadius = 5;
+
+      let playerScore = 0;
+      let aiScore = 0;
+
+      // Mouse control
+      canvas.addEventListener("mousemove", (evt) => {
+        const rect = canvas.getBoundingClientRect();
+        const root = document.documentElement;
+        const mouseY = evt.clientY - rect.top - root.scrollTop;
+        playerY = mouseY - (paddleHeight / 2);
+      });
+
+      // Touch control
+      canvas.addEventListener("touchmove", (evt) => {
+        evt.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const touchY = evt.touches[0].clientY - rect.top;
+        playerY = touchY - (paddleHeight / 2);
+      }, { passive: false });
+
+      function resetBall() {
+        ballSpeedX = -ballSpeedX;
+        ballSpeedY = (Math.random() - 0.5) * 4;
+        ballX = canvas.width / 2;
+        ballY = canvas.height / 2;
+      }
+
+      function gameLoop() {
+        // AI movement tracking
+        let aiCenter = aiY + (paddleHeight / 2);
+        if (aiCenter < ballY - 18) {
+          aiY += 3.2;
+        } else if (aiCenter > ballY + 18) {
+          aiY -= 3.2;
+        }
+
+        // Ball movement
+        ballX += ballSpeedX;
+        ballY += ballSpeedY;
+
+        // Wall collisions
+        if (ballY - ballRadius < 0 || ballY + ballRadius > canvas.height) {
+          ballSpeedY = -ballSpeedY;
+        }
+
+        // Left paddle collision (Player)
+        if (ballX - ballRadius < paddleWidth + 12) {
+          if (ballY > playerY && ballY < playerY + paddleHeight) {
+            ballSpeedX = Math.abs(ballSpeedX) + 0.2;
+            let deltaY = ballY - (playerY + paddleHeight / 2);
+            ballSpeedY = deltaY * 0.25;
+          } else if (ballX < 0) {
+            aiScore++;
+            document.getElementById("aiScore").textContent = aiScore;
+            resetBall();
+          }
+        }
+
+        // Right paddle collision (AI)
+        if (ballX + ballRadius > canvas.width - paddleWidth - 12) {
+          if (ballY > aiY && ballY < aiY + paddleHeight) {
+            ballSpeedX = -Math.abs(ballSpeedX) - 0.2;
+            let deltaY = ballY - (aiY + paddleHeight / 2);
+            ballSpeedY = deltaY * 0.25;
+          } else if (ballX > canvas.width) {
+            playerScore++;
+            document.getElementById("pScore").textContent = playerScore;
+            resetBall();
+          }
+        }
+
+        // Drawing
+        ctx.fillStyle = "#020617";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Net
+        ctx.strokeStyle = "#1e293b";
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2, 0);
+        ctx.lineTo(canvas.width / 2, canvas.height);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Player Paddle
+        ctx.fillStyle = "#06b6d4";
+        ctx.fillRect(10, playerY, paddleWidth, paddleHeight);
+
+        // AI Paddle
+        ctx.fillStyle = "#818cf8";
+        ctx.fillRect(canvas.width - 10 - paddleWidth, aiY, paddleWidth, paddleHeight);
+
+        // Ball
+        ctx.fillStyle = "#facc15";
+        ctx.beginPath();
+        ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+        ctx.fill();
+
+        liveTennisGameLoop = requestAnimationFrame(gameLoop);
+      }
+
+      liveTennisGameLoop = requestAnimationFrame(gameLoop);
+    }
+
+    // Contact Form Submission Handler
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const submitBtn = document.getElementById("submitBtn");
+      const toast = document.getElementById("formSuccessToast");
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Transmitting...`;
+      lucide.createIcons();
+
+      setTimeout(() => {
+        toast.classList.remove("hidden");
+        document.getElementById("contactForm").reset();
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i data-lucide="send" class="w-4 h-4"></i> Send Message`;
+        lucide.createIcons();
+
+        setTimeout(() => {
+          toast.classList.add("hidden");
+        }, 6000);
+      }, 700);
+    }
+
+    // Resume Download Placeholder Function
+    function downloadResumePlaceholder() {
+      const resumeSummary = `Prajwal A Narappanavar
+Electronics & Communication Engineering (ECE)
+KLE Institute of Technology (KLEIT), Hubballi, Karnataka, India
+Aspiring VLSI Engineer & Embedded Systems Developer
+
+SKILLS:
+- Hardware: VLSI Design, CMOS Fundamentals, 8051 Microcontroller, Arduino Uno, SPICE, EasyEDA.
+- Programming: C, Embedded C, Python, Data Structures, Assembly.
+- Web & Tools: HTML5, CSS3, JavaScript, Flask, Git, Linux.
+
+PROJECTS:
+1. IR-Based Automated Object Counter (Arduino + Debounced Sensor + 16x2 I2C LCD)
+2. Web Tennis Game Simulator (Python, Flask, HTML5 Canvas 2D)
+3. CMOS Logic & Digital Synthesis (Transistor-level Inverter & NAND simulation)
+
+INTERESTS:
+Football & Messi, Strength Training, Market Technical Analysis, Speedcubing 3x3.
+Email: prajwal.narappanavar@example.com
+`;
+      const blob = new Blob([resumeSummary], { type: "text/plain;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "Prajwal_A_Narappanavar_Resume_Summary.txt";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>
